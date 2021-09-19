@@ -19,12 +19,12 @@ class TestRequests(unittest.TestCase):
 
     def test_int2str(self):
         for n, n_string in self.strings.items():
-            response = requests.post(url="http://127.0.0.1:8000/convert/", json={"number": n})
+            response = requests.post(url="http://127.0.0.1/convert/", json={"number": n})
             response = json.loads(response.text)
             self.assertEqual(response['number_string'], n_string)
 
     def test_Exception(self):
-        response = requests.post(url="http://127.0.0.1:8000/convert/", json={"number": 1000001})
+        response = requests.post(url="http://127.0.0.1/convert/", json={"number": 1000001})
         response = json.loads(response.text)
         self.assertEqual(response['detail'], "Number is of order greater 6")
 
